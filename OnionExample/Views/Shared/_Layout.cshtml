@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body ng-app="@RenderSection("ngApp", required: true)" ng-controller="layoutController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li ng-class="layout.activePage === 'products' ? 'active' : ''">
+                        <a href="@Url.Action("Index", "Products", new { area = "Products" })">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li ng-class="layout.activePage === 'orders' ? 'active' : ''">
+                        <a href="@Url.Action("Index", "Orders", new { area = "Orders" })">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                            Orders
+                            <span ng-if="layout.activeOrdersAmount" class="badge" style="margin-left: 5px;">{{layout.activeOrdersAmount}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="layout.activePage === 'cart' ? 'active' : ''">
+                    <a href="@Url.Action("Index", "Cart", new { area = "Cart" })">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        Cart
+                        <span ng-if="layout.cartItemsAmount" class="badge" style="margin-left: 5px;">{{layout.cartItemsAmount}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Onion Example (Domain services)</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/core")
+    @Scripts.Render("~/bundles/apps")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
