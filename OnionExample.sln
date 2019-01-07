@@ -9,19 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infracstructure", "Infracstructure", "{C2897B05-56A4-4684-A03C-86BDEE63015E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{BAEF3D56-9E5F-485F-87D8-07A6A15FC113}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BAEF3D56-9E5F-485F-87D8-07A6A15FC113}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Domain.Services.Contracts", "OnionExample.Domain.Services.Contracts\OnionExample.Domain.Services.Contracts.csproj", "{14B28844-F3E3-4602-99A7-BC4A8FE058E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Core.Services.Contracts", "OnionExample.Domain.Services.Contracts\OnionExample.Core.Services.Contracts.csproj", "{14B28844-F3E3-4602-99A7-BC4A8FE058E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Domain.DataProviders.Contracts", "OnionExample.Domain.DataProviders.Contracts\OnionExample.Domain.DataProviders.Contracts.csproj", "{8316B2B1-614C-4B2B-A237-AD2E960E04F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Core.DataProviders.Contracts", "OnionExample.Domain.DataProviders.Contracts\OnionExample.Core.DataProviders.Contracts.csproj", "{8316B2B1-614C-4B2B-A237-AD2E960E04F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Domain.Models.Common", "OnionExample.Domain.Models.Common\OnionExample.Domain.Models.Common.csproj", "{7C882025-0C66-431A-ABD6-7ADCCC1CD7CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Core.Domain", "OnionExample.Domain.Models.Common\OnionExample.Core.Domain.csproj", "{7C882025-0C66-431A-ABD6-7ADCCC1CD7CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Common", "OnionExample.Common\OnionExample.Common.csproj", "{29205999-8CA1-4D49-B8A0-090328688987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Domain.DataProviders", "OnionExample.Domain.DataProviders\OnionExample.Domain.DataProviders.csproj", "{6F00AAFE-C97C-4829-9CE8-04F07FB55A0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Infastructure.DataProviders", "OnionExample.Domain.DataProviders\OnionExample.Infastructure.DataProviders.csproj", "{6F00AAFE-C97C-4829-9CE8-04F07FB55A0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Domain.Services", "OnionExample.Domain.Services\OnionExample.Domain.Services.csproj", "{38C50D42-4D37-44D9-9272-758368140F35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionExample.Core.Services", "OnionExample.Domain.Services\OnionExample.Core.Services.csproj", "{38C50D42-4D37-44D9-9272-758368140F35}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OnionExample.Database", "OnionExample.Database\OnionExample.Database.sqlproj", "{8DEA2F8A-8736-4E00-8E8D-01F8885120F6}"
 EndProject
@@ -76,7 +76,7 @@ Global
 		{7C882025-0C66-431A-ABD6-7ADCCC1CD7CE} = {BAEF3D56-9E5F-485F-87D8-07A6A15FC113}
 		{29205999-8CA1-4D49-B8A0-090328688987} = {C2897B05-56A4-4684-A03C-86BDEE63015E}
 		{6F00AAFE-C97C-4829-9CE8-04F07FB55A0D} = {C2897B05-56A4-4684-A03C-86BDEE63015E}
-		{38C50D42-4D37-44D9-9272-758368140F35} = {C2897B05-56A4-4684-A03C-86BDEE63015E}
+		{38C50D42-4D37-44D9-9272-758368140F35} = {BAEF3D56-9E5F-485F-87D8-07A6A15FC113}
 		{8DEA2F8A-8736-4E00-8E8D-01F8885120F6} = {C2897B05-56A4-4684-A03C-86BDEE63015E}
 	EndGlobalSection
 EndGlobal

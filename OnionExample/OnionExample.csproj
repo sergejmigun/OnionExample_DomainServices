@@ -273,13 +273,13 @@
       <Project>{29205999-8ca1-4d49-b8a0-090328688987}</Project>
       <Name>OnionExample.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnionExample.Domain.Models.Common\OnionExample.Domain.Models.Common.csproj">
+    <ProjectReference Include="..\OnionExample.Domain.Models.Common\OnionExample.Core.Domain.csproj">
       <Project>{7c882025-0c66-431a-abd6-7adccc1cd7ce}</Project>
-      <Name>OnionExample.Domain.Models.Common</Name>
+      <Name>OnionExample.Core.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnionExample.Domain.Services.Contracts\OnionExample.Domain.Services.Contracts.csproj">
+    <ProjectReference Include="..\OnionExample.Domain.Services.Contracts\OnionExample.Core.Services.Contracts.csproj">
       <Project>{14b28844-f3e3-4602-99a7-bc4a8fe058e7}</Project>
-      <Name>OnionExample.Domain.Services.Contracts</Name>
+      <Name>OnionExample.Core.Services.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

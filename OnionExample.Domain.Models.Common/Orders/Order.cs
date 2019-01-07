@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using OnionExample.Domain.Models.Common.Orders;
 
-namespace OnionExample.Domain.DataProviders.Contracts.Orders.Models
+namespace OnionExample.Core.Domain.Orders.Models
 {
     public class Order
     {

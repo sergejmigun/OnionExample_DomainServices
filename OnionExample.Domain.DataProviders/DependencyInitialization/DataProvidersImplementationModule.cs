@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using OnionExample.Domain.DataProviders.Contracts.Orders;
-using OnionExample.Domain.DataProviders.Contracts.Products;
+using OnionExample.Core.DataProviders.Contracts.Orders;
+using OnionExample.Core.DataProviders.Contracts.Products;
 using OnionExample.Domain.DataProviders.Orders;
 using OnionExample.Domain.DataProviders.Products;
 

@@ -1,4 +1,4 @@
-﻿namespace OnionExample.Domain.Models.Common.Products
+﻿namespace OnionExample.Core.Domain.Products
 {
     public class Product
     {

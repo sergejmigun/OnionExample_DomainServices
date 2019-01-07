@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OnionExample.Domain.DataProviders.Contracts.Products;
-using OnionExample.Domain.Models.Common.Products;
-using OnionExample.Domain.Services.Contracts.Products;
+using OnionExample.Core.DataProviders.Contracts.Products;
+using OnionExample.Core.Domain.Products;
+using OnionExample.Core.Services.Contracts.Products;
 
 namespace OnionExample.Domain.Services.Products
 {

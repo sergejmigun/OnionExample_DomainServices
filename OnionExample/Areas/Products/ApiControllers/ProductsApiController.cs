@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using OnionExample.Areas.Products.ApiModels;
-using OnionExample.Domain.Services.Contracts.Products;
 using OnionExample.Areas.Products.Mappers;
+using OnionExample.Core.Services.Contracts.Products;
 
 namespace OnionExample.Areas.Products.ApiControllers
 {

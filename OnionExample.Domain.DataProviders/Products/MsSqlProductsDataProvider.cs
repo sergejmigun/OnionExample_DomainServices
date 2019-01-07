@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using OnionExample.Domain.DataProviders.Contracts.Products;
+using OnionExample.Core.DataProviders.Contracts.Products;
+using OnionExample.Core.Domain.Products;
 using OnionExample.Domain.DataProviders.Helpers;
-using OnionExample.Domain.Models.Common.Products;
 
 namespace OnionExample.Domain.DataProviders.Products
 {

@@ -3,10 +3,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using OnionExample.Domain.DataProviders.Contracts.Orders;
-using OnionExample.Domain.DataProviders.Contracts.Orders.Models;
+using OnionExample.Core.DataProviders.Contracts.Orders;
+using OnionExample.Core.Domain.Orders;
+using OnionExample.Core.Domain.Orders.Models;
 using OnionExample.Domain.DataProviders.Helpers;
-using OnionExample.Domain.Models.Common.Orders;
 
 namespace OnionExample.Domain.DataProviders.Orders
 {
@@ -47,7 +47,7 @@ namespace OnionExample.Domain.DataProviders.Orders
             }
         }
 
-        public int Create(OrderCreationData order)
+        public int Create(Order order)
         {
             using (IDbConnection db = new SqlConnection(MsSqlHelper.GetConnectionString()))
             {
@@ -67,7 +67,7 @@ namespace OnionExample.Domain.DataProviders.Orders
             }
         }
 
-        public void Update(OrderUpdatingData order)
+        public void Update(Order order)
         {
             using (IDbConnection db = new SqlConnection(MsSqlHelper.GetConnectionString()))
             {
@@ -76,17 +76,17 @@ namespace OnionExample.Domain.DataProviders.Orders
                 db.Execute(updateOrderQuery, new
                 {
                     Status = order.Status,
-                    OrderId = order.OrderId
+                    OrderId = order.Id
                 });
 
                 string deleteItemsQuery = "DELETE FROM [dbo].[OrderItems] WHERE [OrderId] = @OrderId";
 
                 db.Execute(deleteItemsQuery, new
                 {
-                    OrderId = order.OrderId
+                    OrderId = order.Id
                 });
 
-                InsertOrderItems(db, order.Items, order.OrderId);
+                InsertOrderItems(db, order.Items, order.Id);
             }
         }
 
@@ -129,15 +129,20 @@ namespace OnionExample.Domain.DataProviders.Orders
             }).ToList();
         }
 
-        private static void InsertOrderItems(IDbConnection db, IEnumerable<OrderItemManagementData> items, int orderId)
+        private static void InsertOrderItems(IDbConnection db, IEnumerable<OrderItem> items, int orderId)
         {
             string insertOrderItemQuery = @"INSERT INTO [dbo].[OrderItems]([OrderId], [ProductId], [ProductTitle], [Price], [Quantity]) VALUES (@OrderId, @ProductId, @ProductTitle, @Price, @Quantity)";
 
-            foreach (OrderItemManagementData item in items)
+            foreach (OrderItem item in items)
             {
-                item.OrderId = orderId;
-
-                db.Execute(insertOrderItemQuery, item);
+                db.Execute(insertOrderItemQuery, new
+                {
+                    OrderId = orderId,
+                    ProductId = item.ProductId,
+                    ProductTitle = item.ProductTitle,
+                    Price = item.Price,
+                    Quantity = item.Quantity
+                });
             }
         }
     }

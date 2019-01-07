@@ -1,5 +1,5 @@
 ﻿using OnionExample.Areas.Products.ApiModels;
-using OnionExample.Domain.Models.Common.Products;
+using OnionExample.Core.Domain.Products;
 
 namespace OnionExample.Areas.Products.Mappers
 {

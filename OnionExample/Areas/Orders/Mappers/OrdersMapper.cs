@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using OnionExample.Areas.Orders.ApiModels;
-using OnionExample.Domain.Services.Contracts.Orders.Models;
+using OnionExample.Core.Domain.Orders.Models;
 
 namespace OnionExample.Areas.Orders.Mappers
 {

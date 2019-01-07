@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OnionExample.Domain.DataProviders.Contracts.Orders;
-using OnionExample.Domain.DataProviders.Contracts.Products;
-using OnionExample.Domain.Models.Common.Orders;
-using OnionExample.Domain.Models.Common.Products;
-using OnionExample.Domain.Services.Contracts.Orders;
-using OnionExample.Domain.Services.Contracts.Orders.Models;
-using Dal = OnionExample.Domain.DataProviders.Contracts.Orders.Models;
+using OnionExample.Core.DataProviders.Contracts.Orders;
+using OnionExample.Core.DataProviders.Contracts.Products;
+using OnionExample.Core.Domain.Orders;
+using OnionExample.Core.Domain.Orders.Models;
+using OnionExample.Core.Domain.Products;
+using OnionExample.Core.Services.Contracts.Orders.Models;
+using OnionExample.Core.Services.Contracts.Orders;
 
 namespace OnionExample.Domain.Services.Orders
 {
@@ -26,47 +26,85 @@ namespace OnionExample.Domain.Services.Orders
 
         public IEnumerable<Order> GetAll()
         {
-            return this.ordersDataProvider.GetAll().Select(x => x.ToOrder()).ToList();
+            return this.ordersDataProvider.GetAll();
         }
 
         public Order GetById(int orderId)
         {
-            return this.ordersDataProvider.GetById(orderId).ToOrder();
+            return this.ordersDataProvider.GetById(orderId);
         }
 
-        public int Create(OrderCreationData order)
+        public int Create(OrderManagementData orderData)
         {
-            Dal.OrderCreationData dalOrderData = order.ToDalOrderCreationData();
+            var order = new Order
+            {
+                CreationDate = DateTime.Now,
+                Status = (short)OrderStatus.Pending,
+                Items = new List<OrderItem>(),
+                Customer = orderData.Customer
+            };
 
-            dalOrderData.CreationDate = DateTime.Now;
-            dalOrderData.Status = (short)OrderStatus.Pending;
-
-            foreach (Dal.OrderItemManagementData item in dalOrderData.Items)
+            foreach (OrderItemManagementData item in orderData.Items)
             {
                 Product product = this.productsDataProvider.GetById(item.ProductId);
 
-                item.ProductTitle = product.Title;
-                item.Price = product.Price;
+                order.Items.Add(new OrderItem
+                {
+                    ProductTitle = product.Title,
+                    Price = product.Price
+                });
             }
 
-            return this.ordersDataProvider.Create(dalOrderData);
+            return this.ordersDataProvider.Create(order);
         }
 
         public void CompleteOrder(int orderId)
         {
             Order order = this.GetById(orderId);
 
-            this.ordersDataProvider.Update(new Dal.OrderUpdatingData
-            {
-                OrderId = orderId,
-                Status = (short)OrderStatus.Processed,
-                Items = order.Items.Select(x => x.ToDalOrderItemManagementData(orderId))
-            });
+            order.Status = (short)OrderStatus.Processed;
         }
 
         public void Delete(int orderId)
         {
             this.ordersDataProvider.Delete(orderId);
+        }
+
+        public void AddToOrder(OrderItemManagementData data)
+        {
+            Order order = this.ordersDataProvider.GetById(data.OrderId);
+            OrderItem item = order.Items.Where(x => x.ProductId == data.ProductId).FirstOrDefault();
+
+            if (item == null)
+            {
+                Product product = this.productsDataProvider.GetById(data.ProductId);
+
+                order.Items.Add(new OrderItem
+                {
+                    ProductId = data.ProductId,
+                    Price = product.Price,
+                    ProductTitle = product.Title,
+                    Quantity = data.Quantity
+                });
+            }
+            else
+            {
+                item.Quantity = data.Quantity;
+            }
+
+            this.ordersDataProvider.Update(order);
+        }
+
+        public void DeleteFromOrder(OrderItemManagementData data)
+        {
+            Order order = this.ordersDataProvider.GetById(data.OrderId);
+            OrderItem item = order.Items.Where(x => x.ProductId == data.ProductId).FirstOrDefault();
+
+            if (item != null)
+            {
+                order.Items.Remove(item);
+                this.ordersDataProvider.Update(order);
+            }
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using OnionExample.Domain.Services.Contracts.Orders.Models;
+using OnionExample.Core.Domain.Orders.Models;
+using OnionExample.Core.Services.Contracts.Orders.Models;
 
-namespace OnionExample.Domain.Services.Contracts.Orders
+namespace OnionExample.Core.Services.Contracts.Orders
 {
     public interface IOrdersService
     {
@@ -9,9 +10,13 @@ namespace OnionExample.Domain.Services.Contracts.Orders
 
         Order GetById(int orderId);
 
-        int Create(OrderCreationData order);
+        int Create(OrderManagementData order);
 
         void CompleteOrder(int orderId);
+
+        void AddToOrder(OrderItemManagementData data);
+
+        void DeleteFromOrder(OrderItemManagementData data);
 
         void Delete(int orderId);
     }

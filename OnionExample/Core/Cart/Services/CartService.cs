@@ -2,10 +2,10 @@
 using System.Web;
 using OnionExample.Areas.Cart.ApiModels;
 using OnionExample.Areas.Orders.ApiModels;
-using OnionExample.Domain.Models.Common.Orders;
-using OnionExample.Domain.Services.Contracts.Orders;
-using OnionExample.Domain.Services.Contracts.Orders.Models;
-using OnionExample.Domain.Services.Contracts.Products;
+using OnionExample.Core.Domain.Orders;
+using OnionExample.Core.Services.Contracts.Orders.Models;
+using OnionExample.Core.Services.Contracts.Orders;
+using OnionExample.Core.Services.Contracts.Products;
 
 namespace OnionExample.Core.Cart.Services
 {
@@ -72,7 +72,7 @@ namespace OnionExample.Core.Cart.Services
         {
             CartModel cart = this.GetCart();
 
-            this.ordersService.Create(new OrderCreationData
+            this.ordersService.Create(new OrderManagementData
             {
                 Customer = new OrderCustomer
                 {
@@ -83,7 +83,7 @@ namespace OnionExample.Core.Cart.Services
                 {
                     ProductId = x.ProductId,
                     Quantity = x.Quantity
-                })
+                }).ToList()
             });
 
             cart.Items.Clear();

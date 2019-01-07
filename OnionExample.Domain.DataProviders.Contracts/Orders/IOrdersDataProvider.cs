@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OnionExample.Domain.DataProviders.Contracts.Orders.Models;
+using OnionExample.Core.Domain.Orders.Models;
 
-namespace OnionExample.Domain.DataProviders.Contracts.Orders
+namespace OnionExample.Core.DataProviders.Contracts.Orders
 {
     public interface IOrdersDataProvider
     {
@@ -9,9 +9,9 @@ namespace OnionExample.Domain.DataProviders.Contracts.Orders
 
         Order GetById(int orderId);
 
-        int Create(OrderCreationData order);
+        int Create(Order order);
 
-        void Update(OrderUpdatingData order);
+        void Update(Order order);
 
         void Delete(int orderId);
     }

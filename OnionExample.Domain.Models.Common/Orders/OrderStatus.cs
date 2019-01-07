@@ -1,4 +1,4 @@
-﻿namespace OnionExample.Domain.Models.Common.Orders
+﻿namespace OnionExample.Core.Domain.Orders
 {
     public enum OrderStatus
     {

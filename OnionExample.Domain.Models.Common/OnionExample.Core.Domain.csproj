@@ -7,8 +7,8 @@
     <ProjectGuid>{7C882025-0C66-431A-ABD6-7ADCCC1CD7CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnionExample.Domain.Models.Common</RootNamespace>
-    <AssemblyName>OnionExample.Domain.Models.Common</AssemblyName>
+    <RootNamespace>OnionExample.Core.Domain</RootNamespace>
+    <AssemblyName>OnionExample.Core.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Orders\Order.cs" />
     <Compile Include="Orders\OrderCustomer.cs" />
     <Compile Include="Orders\OrderItem.cs" />
     <Compile Include="Orders\OrderStatus.cs" />

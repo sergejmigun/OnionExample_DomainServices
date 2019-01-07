@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using OnionExample.Domain.DataProviders.Contracts.Orders;
-using OnionExample.Domain.DataProviders.Contracts.Orders.Models;
+using OnionExample.Core.DataProviders.Contracts.Orders;
+using OnionExample.Core.Domain.Orders.Models;
 
 namespace OnionExample.Domain.DataProviders.Orders
 {
@@ -19,29 +19,22 @@ namespace OnionExample.Domain.DataProviders.Orders
             return this.GetAll().First(x => x.Id == orderId);
         }
 
-        public int Create(OrderCreationData creationData)
+        public int Create(Order order)
         {
             var orders = GetOrdersFromSession();
             int id = new Random().Next();
 
-            orders.Add(new Order
-            {
-                Id = id,
-                CreationDate = creationData.CreationDate,
-                Customer = creationData.Customer,
-                Items = creationData.Items.Select(x => x.ToOrderItem()).ToList(),
-                Status = creationData.Status
-            });
+            orders.Add(order);
 
             return id;
         }
 
-        public void Update(OrderUpdatingData updatingData)
+        public void Update(Order order)
         {
-            Order order = this.GetById(updatingData.OrderId);
+            Order sessionOrder = this.GetById(order.Id);
 
-            order.Status = updatingData.Status;
-            order.Items = updatingData.Items.Select(x => x.ToOrderItem()).ToList();
+            sessionOrder.Status = order.Status;
+            sessionOrder.Items = order.Items;
         }
 
         public void Delete(int orderId)

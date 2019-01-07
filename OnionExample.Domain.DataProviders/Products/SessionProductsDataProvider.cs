@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
-using OnionExample.Domain.DataProviders.Contracts.Products;
-using OnionExample.Domain.Models.Common.Products;
+using OnionExample.Core.DataProviders.Contracts.Products;
+using OnionExample.Core.Domain.Products;
 
 namespace OnionExample.Domain.DataProviders.Products
 {

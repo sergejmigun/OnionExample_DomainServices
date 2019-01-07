@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using OnionExample.Domain.Models.Common.Products;
+using OnionExample.Core.Domain.Products;
 
-namespace OnionExample.Domain.DataProviders.Contracts.Products
+namespace OnionExample.Core.DataProviders.Contracts.Products
 {
     public interface IProductsDataProvider
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{6F00AAFE-C97C-4829-9CE8-04F07FB55A0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnionExample.Domain.DataProviders</RootNamespace>
-    <AssemblyName>OnionExample.Domain.DataProviders</AssemblyName>
+    <RootNamespace>OnionExample.Infastructure.DataProviders</RootNamespace>
+    <AssemblyName>OnionExample.Infastructure.DataProviders</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -84,7 +84,6 @@
     <Compile Include="Helpers\MsSqlHelper.cs" />
     <Compile Include="Orders\MongoDbOrdersDataProvider.cs" />
     <Compile Include="Orders\MsSqlOrdersDataProvider.cs" />
-    <Compile Include="Orders\OrdersMapper.cs" />
     <Compile Include="Orders\SessionOrdersDataProvider.cs" />
     <Compile Include="Products\MongoDbProductsDataProvider.cs" />
     <Compile Include="Products\MsSqlProductsDataProvider.cs" />
@@ -96,13 +95,13 @@
       <Project>{8dea2f8a-8736-4e00-8e8d-01f8885120f6}</Project>
       <Name>OnionExample.Database</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnionExample.Domain.DataProviders.Contracts\OnionExample.Domain.DataProviders.Contracts.csproj">
+    <ProjectReference Include="..\OnionExample.Domain.DataProviders.Contracts\OnionExample.Core.DataProviders.Contracts.csproj">
       <Project>{8316b2b1-614c-4b2b-a237-ad2e960e04f2}</Project>
-      <Name>OnionExample.Domain.DataProviders.Contracts</Name>
+      <Name>OnionExample.Core.DataProviders.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnionExample.Domain.Models.Common\OnionExample.Domain.Models.Common.csproj">
+    <ProjectReference Include="..\OnionExample.Domain.Models.Common\OnionExample.Core.Domain.csproj">
       <Project>{7c882025-0c66-431a-abd6-7adccc1cd7ce}</Project>
-      <Name>OnionExample.Domain.Models.Common</Name>
+      <Name>OnionExample.Core.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

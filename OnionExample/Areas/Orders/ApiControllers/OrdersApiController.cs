@@ -3,22 +3,19 @@ using System.Linq;
 using System.Web.Http;
 using OnionExample.Areas.Orders.ApiModels;
 using OnionExample.Areas.Orders.Mappers;
-using OnionExample.Domain.Services.Contracts.Orders;
-using OnionExample.Domain.Services.Contracts.Orders.Models;
+using OnionExample.Core.Services.Contracts.Orders.Models;
+using OnionExample.Core.Services.Contracts.Orders;
 
 namespace OnionExample.Areas.Orders.ApiControllers
 {
     public class OrdersApiController : ApiController
     {
         private readonly IOrdersService ordersService;
-        private readonly IOrderItemsService orderItemsService;
 
         public OrdersApiController(
-            IOrdersService ordersService,
-            IOrderItemsService orderItemsService)
+            IOrdersService ordersService)
         {
             this.ordersService = ordersService;
-            this.orderItemsService = orderItemsService;
         }
 
         [HttpGet]
@@ -48,7 +45,7 @@ namespace OnionExample.Areas.Orders.ApiControllers
         [HttpPut]
         public void AddProduct(int orderId, int productId, int quantity)
         {
-            this.orderItemsService.AddToOrder(new OrderItemManagementData
+            this.ordersService.AddToOrder(new OrderItemManagementData
             {
                 OrderId = orderId,
                 ProductId = productId,
@@ -59,7 +56,7 @@ namespace OnionExample.Areas.Orders.ApiControllers
         [HttpPut]
         public void UpdateProduct(int orderId, int productId, int quantity)
         {
-            this.orderItemsService.AddToOrder(new OrderItemManagementData
+            this.ordersService.AddToOrder(new OrderItemManagementData
             {
                 OrderId = orderId,
                 ProductId = productId,
@@ -70,7 +67,7 @@ namespace OnionExample.Areas.Orders.ApiControllers
         [HttpDelete]
         public void DeleteProduct(int orderId, int productId)
         {
-            this.orderItemsService.DeleteFromOrder(new OrderItemManagementData
+            this.ordersService.DeleteFromOrder(new OrderItemManagementData
             {
                 OrderId = orderId,
                 ProductId = productId

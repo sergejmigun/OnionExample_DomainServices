@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using OnionExample.Domain.Models.Common.Orders;
+using OnionExample.Core.Domain.Orders;
 
-namespace OnionExample.Domain.Services.Contracts.Orders.Models
+namespace OnionExample.Core.Services.Contracts.Orders.Models
 {
-    public class OrderCreationData
+    public class OrderManagementData
     {
         public OrderCustomer Customer { get; set; }
 

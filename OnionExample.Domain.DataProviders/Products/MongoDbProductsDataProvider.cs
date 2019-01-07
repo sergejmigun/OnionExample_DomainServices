@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using MongoDB.Driver;
-using OnionExample.Domain.DataProviders.Contracts.Products;
+using OnionExample.Core.DataProviders.Contracts.Products;
+using OnionExample.Core.Domain.Products;
 using OnionExample.Domain.DataProviders.Helpers;
-using OnionExample.Domain.Models.Common.Products;
 
 namespace OnionExample.Domain.DataProviders.Products
 {

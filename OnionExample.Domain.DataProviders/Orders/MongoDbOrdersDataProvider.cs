@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using MongoDB.Driver;
-using OnionExample.Domain.DataProviders.Contracts.Orders;
-using OnionExample.Domain.DataProviders.Contracts.Orders.Models;
+using OnionExample.Core.DataProviders.Contracts.Orders;
+using OnionExample.Core.Domain.Orders;
+using OnionExample.Core.Domain.Orders.Models;
 using OnionExample.Domain.DataProviders.Helpers;
-using OnionExample.Domain.Models.Common.Orders;
 
 namespace OnionExample.Domain.DataProviders.Orders
 {
@@ -24,7 +24,7 @@ namespace OnionExample.Domain.DataProviders.Orders
             return GetOrdersSet().FindSync(filter).First();
         }
 
-        public int Create(OrderCreationData order)
+        public int Create(Order order)
         {
             int id = new Random().Next();
 
@@ -46,14 +46,14 @@ namespace OnionExample.Domain.DataProviders.Orders
             return id;
         }
 
-        public void Update(OrderUpdatingData order)
+        public void Update(Order order)
         {
             var database = MongoDbHelper.GetDatabase();
 
-            var filter = Builders<Order>.Filter.Where(x => x.Id == order.OrderId);
+            var filter = Builders<Order>.Filter.Where(x => x.Id == order.Id);
             var update = Builders<Order>.Update
                 .Set(x => x.Status, order.Status)
-                .Set(x => x.Items, order.Items.Select(x => ToOrderItem(x)).ToList());
+                .Set(x => x.Items, order.Items);
 
             GetOrdersSet().UpdateOne(filter, update);
         }
@@ -62,17 +62,6 @@ namespace OnionExample.Domain.DataProviders.Orders
         {
             var filter = Builders<Order>.Filter.Where(x => x.Id == orderId);
             GetOrdersSet().DeleteOne(filter);
-        }
-
-        private static OrderItem ToOrderItem(OrderItemManagementData data)
-        {
-            return new OrderItem
-            {
-                Price = data.Price,
-                ProductId = data.ProductId,
-                ProductTitle = data.ProductTitle,
-                Quantity = data.Quantity
-            };
         }
 
         private static IMongoCollection<Order> GetOrdersSet()
